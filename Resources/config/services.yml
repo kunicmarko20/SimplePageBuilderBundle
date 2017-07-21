@@ -1,0 +1,21 @@
+services:
+    simple_page_builder.discriminator_map.listener:
+        class: KunicMarko\SimplePageBuilderBundle\EventListener\DiscriminatorMapListener
+        arguments: ["%simple_page_builder.types%"]
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
+
+    simple_page_builder_types.admin:
+        class: KunicMarko\SimplePageBuilderBundle\Admin\AbstractTypeAdmin
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\AbstractType, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, show_in_dashboard: false }
+        calls:
+            - [ setTypes, [ "%simple_page_builder.types%" ] ]
+            - [ setSubClasses, [{}] ]
+
+    simple_page_builder.admin:
+        class: KunicMarko\SimplePageBuilderBundle\Admin\PageBuilderAdmin
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilder, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin , show_in_dashboard: false}
