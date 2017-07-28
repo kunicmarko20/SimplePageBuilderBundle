@@ -9,6 +9,7 @@
 namespace KunicMarko\SimplePageBuilderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * PageBuilder
@@ -28,27 +29,40 @@ class PageBuilder
      */
     protected $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="PageBuilderHasType", mappedBy="pageBuilder", cascade={"persist","remove"}, orphanRemoval=true)
+     * @ORM\OrderBy(value={"position" = "ASC"})
+     **/
+    private $pageBuilderHasType;
+
+    public function __construct()
+    {
+        $this->pageBuilderHasType = new ArrayCollection();
+    }
+
+    public function addPageBuilderHasType(PageBuilderHasType $pb)
+    {
+        $pb->setPageBuilder($this);
+        $this->pageBuilderHasType->add($pb) ;
+    }
+
+    public function removePageBuilderHasType(PageBuilderHasType $pb)
+    {
+        $this->pageBuilderHasType->removeElement($pb);
+    }
+
+    public function getPageBuilderHasType()
+    {
+        return $this->pageBuilderHasType;
+    }
+
     public function getId()
     {
         return $this->id;
     }
 
-
-    /**
-     * @ORM\OneToOne(targetEntity="AbstractType", inversedBy="pageBuilder")
-     */
-    private $type;
-
-    public function getType()
+    public function __toString()
     {
-        return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
+        return (new \ReflectionClass($this))->getShortName();
     }
 }

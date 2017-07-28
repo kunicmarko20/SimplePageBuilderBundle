@@ -10,12 +10,10 @@ namespace KunicMarko\SimplePageBuilderBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class AbstractTypeAdmin extends AbstractAdmin
 {
-    /** @var  array */
-    private $types;
-
     /**
      * @param FormMapper $formMapper
      */
@@ -25,21 +23,8 @@ class AbstractTypeAdmin extends AbstractAdmin
         $object->generateFormField($formMapper);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setSubClasses(array $subClasses)
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $newSubClasses = array_merge($subClasses, $this->getTypes());
-        parent::setSubClasses($newSubClasses);
-    }
-
-    public function setTypes(array $types)
-    {
-        $this->types = $types;
-    }
-    public function getTypes()
-    {
-        return $this->types;
+        $collection->remove('list');
     }
 }

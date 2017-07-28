@@ -13,23 +13,26 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class PageBuilderAdmin extends AbstractAdmin
+class PageBuilderHasTypeAdmin extends AbstractAdmin
 {
     /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $entity = $this->getSubject();
         $formMapper
-            ->add('pageBuilderHasType', 'sonata_type_collection', [
-                'by_reference' => false
-            ], [
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'allow_delete' => true,
-                    'sortable' => 'position',
-                ]);
+            ->add('type', 'sonata_type_model_list', [
+                'btn_list' => false,
+                'btn_delete' => false,
+                'btn_add' => $entity !== null && $entity->getType() === null ? 'Add' : 'Edit'
+            ])
+            ->add('position', HiddenType::class, array(
+                'attr' => array("hidden" => true)
+            ))
+        ;
     }
+
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('list');

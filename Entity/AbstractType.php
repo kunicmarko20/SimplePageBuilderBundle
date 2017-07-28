@@ -26,21 +26,21 @@ abstract class AbstractType
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="PageBuilder", mappedBy="type")
+     * @ORM\OneToOne(targetEntity="PageBuilderHasType", mappedBy="type", cascade={"persist","remove"})
      **/
-    private $pageBuilder;
+    private $pageBuilderHasType;
 
-    public function getPageBuilder()
+    public function getPageBuilderHasType()
     {
-        return $this->pageBuilder;
+        return $this->pageBuilderHasType;
     }
 
     /**
-     * @param mixed $pageBuilder
+     * @param mixed $pageBuilderHasType
      */
-    public function setPageBuilder($pageBuilder)
+    public function setPageBuilderHasType($pageBuilderHasType)
     {
-        $this->pageBuilder = $pageBuilder;
+        $this->pageBuilderHasType = $pageBuilderHasType;
     }
 
     /**
@@ -54,10 +54,12 @@ abstract class AbstractType
     }
 
     /**
-     * Get template file used in sonata admin ListMapper
+     * Get template file used in frontend
      * @return string
      */
-    abstract public function getTemplate();
+    public function getTemplate() {
+        return '';
+    }
 
     /**
      * * Create form field for sonata create/edit form

@@ -7,15 +7,20 @@ services:
 
     simple_page_builder_types.admin:
         class: KunicMarko\SimplePageBuilderBundle\Admin\AbstractTypeAdmin
-        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\AbstractType, SonataAdminBundle:CRUD]
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\AbstractType, KunicMarko\SimplePageBuilderBundle:AbstractTypeCRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: admin, show_in_dashboard: false}
         calls:
-            - [ setTypes, [ "%simple_page_builder.types%" ] ]
-            - [ setSubClasses, [{}] ]
+            - [ setSubClasses, ["%simple_page_builder.types%"] ]
 
     simple_page_builder.admin:
         class: KunicMarko\SimplePageBuilderBundle\Admin\PageBuilderAdmin
-        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilder, SonataAdminBundle:CRUD]
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilder, KunicMarko\SimplePageBuilderBundle:PageBuilderCRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin , show_in_dashboard: false}
+
+    simple_page_builder_has_type.admin:
+        class: KunicMarko\SimplePageBuilderBundle\Admin\PageBuilderHasTypeAdmin
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilderHasType, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin , show_in_dashboard: false}
