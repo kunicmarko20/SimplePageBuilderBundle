@@ -76,6 +76,6 @@ abstract class AbstractType
 
     public function __toString()
     {
-        return (new \ReflectionClass(static::class))->getShortName();
+        return (new \ReflectionClass($this))->getShortName();
     }
 }

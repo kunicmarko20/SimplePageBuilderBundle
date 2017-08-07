@@ -7,7 +7,7 @@ services:
 
     simple_page_builder_types.admin:
         class: KunicMarko\SimplePageBuilderBundle\Admin\AbstractTypeAdmin
-        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\AbstractType, KunicMarko\SimplePageBuilderBundle:AbstractTypeCRUD]
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\AbstractType, SimplePageBuilderBundle:AbstractTypeCRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, show_in_dashboard: false}
         calls:
@@ -15,7 +15,7 @@ services:
 
     simple_page_builder.admin:
         class: KunicMarko\SimplePageBuilderBundle\Admin\PageBuilderAdmin
-        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilder, KunicMarko\SimplePageBuilderBundle:PageBuilderCRUD]
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilder, SimplePageBuilderBundle:PageBuilderCRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin , show_in_dashboard: false}
 
