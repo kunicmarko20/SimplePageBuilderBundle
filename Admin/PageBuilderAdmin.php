@@ -30,6 +30,7 @@ class PageBuilderAdmin extends AbstractAdmin
                     'sortable' => 'position',
                 ]);
     }
+
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('list');
