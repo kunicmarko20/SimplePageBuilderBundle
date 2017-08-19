@@ -26,7 +26,7 @@ abstract class AbstractType
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="PageBuilderHasType", mappedBy="type", cascade={"persist","remove"})
+     * @ORM\OneToOne(targetEntity="PageBuilderHasType", mappedBy="type")
      **/
     private $pageBuilderHasType;
 
@@ -54,25 +54,11 @@ abstract class AbstractType
     }
 
     /**
-     * Get template file used in frontend
-     * @return string
-     */
-    public function getTemplate() {
-        return '';
-    }
-
-    /**
      * * Create form field for sonata create/edit form
      * @param FormMapper $formMapper
      * @return void
      */
     abstract public function generateFormField(FormMapper $formMapper);
-
-    /**
-     * Returns value of specific type
-     * @return mixed
-     */
-    abstract public function getValue();
 
     public function __toString()
     {

@@ -25,7 +25,7 @@ class PageBuilderHasTypeAdmin extends AbstractAdmin
             ->add('type', 'sonata_type_model_list', [
                 'btn_list' => false,
                 'btn_delete' => false,
-                'btn_add' => $entity !== null && $entity->getType() === null ? 'Add' : 'Edit'
+                'btn_add' => $entity !== null && $entity->getType() === null ? 'Add' : false
             ])
             ->add('position', HiddenType::class, array(
                 'attr' => array("hidden" => true)

@@ -22,13 +22,14 @@ class PageBuilderAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('pageBuilderHasType', 'sonata_type_collection', [
-                'by_reference' => false
+                'by_reference' => false,
+                'label' => false,
             ], [
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'allow_delete' => true,
-                    'sortable' => 'position',
-                ]);
+                'edit' => 'inline',
+                'inline' => 'table',
+                'allow_delete' => true,
+                'sortable' => 'position',
+            ]);
     }
 
     protected function configureRoutes(RouteCollection $collection)

@@ -30,7 +30,12 @@ class PageBuilder
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="PageBuilderHasType", mappedBy="pageBuilder", cascade={"persist","remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(
+     *     targetEntity="PageBuilderHasType",
+     *     mappedBy="pageBuilder",
+     *     cascade={"persist","remove"},
+     *     orphanRemoval=true
+     * )
      * @ORM\OrderBy(value={"position" = "ASC"})
      **/
     private $pageBuilderHasType;

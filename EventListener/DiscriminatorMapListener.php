@@ -33,7 +33,7 @@ class DiscriminatorMapListener
         $metadata = $event->getClassMetadata();
         $class = $metadata->getReflectionClass();
 
-        if ($class->getName() !== AbstractType::class) {
+        if ($class === null || $class->getName() !== AbstractType::class) {
             return;
         }
 
