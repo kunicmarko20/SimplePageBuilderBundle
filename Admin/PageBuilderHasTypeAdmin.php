@@ -21,11 +21,12 @@ class PageBuilderHasTypeAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $entity = $this->getSubject();
+
         $formMapper
             ->add('type', 'sonata_type_model_list', [
                 'btn_list' => false,
                 'btn_delete' => false,
-                'btn_add' => $entity !== null && $entity->getType() === null ? 'Add' : false
+                'btn_add' => $entity !== null && $entity->getType() === null ? 'Add' : 'Replace With New'
             ])
             ->add('position', HiddenType::class, array(
                 'attr' => array("hidden" => true)

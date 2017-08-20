@@ -1,13 +1,7 @@
 services:
-    simple_page_builder.discriminator_map.listener:
-        class: KunicMarko\SimplePageBuilderBundle\EventListener\DiscriminatorMapListener
-        arguments: ["%simple_page_builder.types%"]
-        tags:
-            - { name: doctrine.event_listener, event: loadClassMetadata }
-
     simple_page_builder_types.admin:
         class: KunicMarko\SimplePageBuilderBundle\Admin\AbstractTypeAdmin
-        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\AbstractType, SimplePageBuilderBundle:AbstractTypeCRUD]
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\AbstractType, SimplePageBuilderBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, show_in_dashboard: false}
         calls:
@@ -15,12 +9,12 @@ services:
 
     simple_page_builder.admin:
         class: KunicMarko\SimplePageBuilderBundle\Admin\PageBuilderAdmin
-        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilder, SimplePageBuilderBundle:PageBuilderCRUD]
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilder, SimplePageBuilderBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin , show_in_dashboard: false}
 
     simple_page_builder_has_type.admin:
         class: KunicMarko\SimplePageBuilderBundle\Admin\PageBuilderHasTypeAdmin
-        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilderHasType, SonataAdminBundle:CRUD]
+        arguments: [~, KunicMarko\SimplePageBuilderBundle\Entity\PageBuilderHasType, SimplePageBuilderBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin , show_in_dashboard: false}

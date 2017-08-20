@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 /**
  * PageBuilder
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="KunicMarko\SimplePageBuilderBundle\Repository\AbstractTypeRepository")
  * @ORM\Table(name="simple_page_builder_type")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
@@ -26,7 +26,7 @@ abstract class AbstractType
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="PageBuilderHasType", mappedBy="type")
+     * @ORM\OneToOne(targetEntity="PageBuilderHasType", mappedBy="type", orphanRemoval=true)
      **/
     private $pageBuilderHasType;
 

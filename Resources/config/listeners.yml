@@ -1,0 +1,15 @@
+services:
+    simple_page_builder.orphan_remover.listener:
+        class: KunicMarko\SimplePageBuilderBundle\EventListener\OrphanRemover
+        arguments:
+             - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: kernel.event_listener, event: sonata.admin.event.persistence.post_update, method: onPersistUpdateRemove }
+            - { name: kernel.event_listener, event: sonata.admin.event.persistence.post_persist, method: onPersistUpdateRemove }
+            - { name: kernel.event_listener, event: sonata.admin.event.persistence.post_remove, method: onPersistUpdateRemove }
+
+    simple_page_builder.discriminator_map.listener:
+        class: KunicMarko\SimplePageBuilderBundle\EventListener\DiscriminatorMapListener
+        arguments: ["%simple_page_builder.types%"]
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }

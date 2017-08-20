@@ -11,7 +11,7 @@
     ],
 
     "keywords": ["simple page builder","page builder", "symfony", "bundle","symfony page builder", "sonata admin page builder"],
-    "homepage": "https://github.com/kunicmarko20/simple-page-builder",
+    "homepage": "https://github.com/kunicmarko20/SimplePageBuilderBundle",
     "license": "MIT",
     "require": {
         "php": "^5.2|^7.0",

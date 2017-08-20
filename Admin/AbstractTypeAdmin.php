@@ -27,4 +27,21 @@ class AbstractTypeAdmin extends AbstractAdmin
     {
         $collection->remove('list');
     }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureActionButtons($action, $object = null)
+    {
+        $list = parent::configureActionButtons($action, $object);
+
+        if (in_array($action, array('tree', 'show', 'edit', 'delete', 'list', 'batch'))) {
+            $list['create'] = array(
+                'template' => 'SimplePageBuilderBundle:Button:abstract_type_create_button.html.twig',
+            );
+        }
+
+        return $list;
+    }
 }
