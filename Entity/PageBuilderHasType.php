@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Marko Kunic
  * Date: 7/28/17
- * Time: 10:02
+ * Time: 10:02.
  */
 
 namespace KunicMarko\SimplePageBuilderBundle\Entity;
@@ -11,16 +11,15 @@ namespace KunicMarko\SimplePageBuilderBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PageBuilder
+ * PageBuilder.
  *
  * @ORM\Entity()
  * @ORM\Table(name="simple_page_builder_has_type")
- *
  */
 class PageBuilderHasType
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -39,7 +38,7 @@ class PageBuilderHasType
     private $type;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="position", type="integer")
      */

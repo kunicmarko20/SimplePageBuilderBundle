@@ -3,19 +3,18 @@
  * Created by PhpStorm.
  * User: Marko Kunic
  * Date: 7/28/17
- * Time: 13:55
+ * Time: 13:55.
  */
 
 namespace KunicMarko\SimplePageBuilderBundle\Controller;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sonata\AdminBundle\Controller\CRUDController as BaseCRUDController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CRUDController extends BaseCRUDController
 {
     /**
-     *
-     * Because we removed list, redirect to dashboard if user even comes to this part
+     * Because we removed list, redirect to dashboard if user even comes to this part.
      *
      * @param object $object
      *
@@ -27,6 +26,7 @@ class CRUDController extends BaseCRUDController
 
         if ($request->getMethod() === 'DELETE') {
             $url = $this->generateUrl('sonata_admin_dashboard');
+
             return new RedirectResponse($url);
         }
 

@@ -3,25 +3,24 @@
  * Created by PhpStorm.
  * User: Marko Kunic
  * Date: 7/20/17
- * Time: 13:01
+ * Time: 13:01.
  */
 
 namespace KunicMarko\SimplePageBuilderBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PageBuilder
+ * PageBuilder.
  *
  * @ORM\Entity()
  * @ORM\Table(name="simple_page_builder")
- *
  */
 class PageBuilder
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -48,7 +47,7 @@ class PageBuilder
     public function addPageBuilderHasType(PageBuilderHasType $pb)
     {
         $pb->setPageBuilder($this);
-        $this->pageBuilderHasType->add($pb) ;
+        $this->pageBuilderHasType->add($pb);
     }
 
     public function removePageBuilderHasType(PageBuilderHasType $pb)

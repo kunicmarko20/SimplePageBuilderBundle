@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Marko Kunic
  * Date: 8/19/17
- * Time: 9:42 PM
+ * Time: 9:42 PM.
  */
 
 namespace KunicMarko\SimplePageBuilderBundle\EventListener;

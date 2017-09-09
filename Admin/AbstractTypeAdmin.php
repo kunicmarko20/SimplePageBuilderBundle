@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Marko Kunic
  * Date: 7/20/17
- * Time: 11:05
+ * Time: 11:05.
  */
 
 namespace KunicMarko\SimplePageBuilderBundle\Admin;
@@ -28,7 +28,6 @@ class AbstractTypeAdmin extends AbstractAdmin
         $collection->remove('list');
     }
 
-
     /**
      * {@inheritdoc}
      */
@@ -36,10 +35,10 @@ class AbstractTypeAdmin extends AbstractAdmin
     {
         $list = parent::configureActionButtons($action, $object);
 
-        if (in_array($action, array('tree', 'show', 'edit', 'delete', 'list', 'batch'))) {
-            $list['create'] = array(
+        if (in_array($action, ['tree', 'show', 'edit', 'delete', 'list', 'batch'])) {
+            $list['create'] = [
                 'template' => 'SimplePageBuilderBundle:Button:abstract_type_create_button.html.twig',
-            );
+            ];
         }
 
         return $list;
