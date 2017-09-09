@@ -3,8 +3,9 @@
  * Created by PhpStorm.
  * User: Marko Kunic
  * Date: 7/20/17
- * Time: 09:30
+ * Time: 09:30.
  */
+
 namespace KunicMarko\SimplePageBuilderBundle\EventListener;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
@@ -13,7 +14,8 @@ use KunicMarko\SimplePageBuilderBundle\Entity\AbstractType;
 class DiscriminatorMapListener
 {
     /**
-     * List of types defined in config file
+     * List of types defined in config file.
+     *
      * @var array
      */
     protected $types;
@@ -24,7 +26,7 @@ class DiscriminatorMapListener
     }
 
     /**
-     * Updates discrimantor map with new types
+     * Updates discrimantor map with new types.
      *
      * @param LoadClassMetadataEventArgs $event
      */

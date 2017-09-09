@@ -6,18 +6,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * PageBuilder
+ * PageBuilder.
  *
  * @ORM\Entity(repositoryClass="KunicMarko\SimplePageBuilderBundle\Repository\AbstractTypeRepository")
  * @ORM\Table(name="simple_page_builder_type")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- *
  */
 abstract class AbstractType
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -44,9 +43,9 @@ abstract class AbstractType
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -54,8 +53,10 @@ abstract class AbstractType
     }
 
     /**
-     * * Create form field for sonata create/edit form
+     * * Create form field for sonata create/edit form.
+     *
      * @param FormMapper $formMapper
+     *
      * @return void
      */
     abstract public function generateFormField(FormMapper $formMapper);
